@@ -5,7 +5,7 @@ module.exports = function solveSudoku(matrix) {
 
 //рекурсивный алгоритм с использованием backtracking
 function recursiveSolve(table, x, y) {
-  var cell = findUnmark(table, x, y);
+  let cell = findUnmark(table, x, y);
   x = cell[0];
   y = cell[1];
 
@@ -15,7 +15,7 @@ function recursiveSolve(table, x, y) {
     return true;
   }
 
-  for (var num = 1; num <= 9; num++) {
+  for (let num = 1; num <= 9; num++) {
 
     if (isOk(table, x, y, num)) {
       table[x][y] = num;
@@ -46,7 +46,7 @@ function isOk(table, x, y, num) {
 }
 
 function isRowOk(table, x, num) {
-  for (var y = 0; y < 9; y++)
+  for (let y = 0; y < 9; y++)
     if (table[x][y] == num)
       return false;
 
@@ -54,7 +54,7 @@ function isRowOk(table, x, num) {
 }
 
 function isColOk(table, y, num) {
-  for (var x = 0; x < 9; x++)
+  for (let x = 0; x < 9; x++)
     if (table[x][y] == num)
       return false;
 
@@ -65,8 +65,8 @@ function isPartOk(table, x, y, num) {
   x = Math.floor(x / 3) * 3; //округляем до целого
   y = Math.floor(y / 3) * 3;
 
-  for (var q = 0; q < 3; q++)
-    for (var z = 0; z < 3; z++)
+  for (let q = 0; q < 3; q++)
+    for (let z = 0; z < 3; z++)
       if (table[x + q][y + z] == num)
         return false;
 
